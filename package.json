@@ -1,0 +1,24 @@
+{
+  "name": "puppeteer-save-svg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "puppeteer": "^1.9.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akeyboardlife/puppeteer-save-svg.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akeyboardlife/puppeteer-save-svg/issues"
+  },
+  "homepage": "https://github.com/akeyboardlife/puppeteer-save-svg#readme"
+}
