@@ -1,6 +1,5 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs');
-const cheerio = require('cheerio');
 
 (async()=>{
     // 配置文件夹路径和http地址
@@ -16,8 +15,7 @@ const cheerio = require('cheerio');
         await page.goto(`${baseURL}${fileNames[i]}`,{ waitUntil: 'networkidle0' ,timeout:'0'})
 
         let html =await page.content()
-        let svgInline= extractSVG(html)
-        svgInline=`<svg>${svgInline}</svg>`
+        let svgInline= await page.evaluate(() => document.querySelector('svg').outerHTML)
         if (!fs.existsSync(`${folderPath}svgs\\`)){
             fs.mkdirSync(`${folderPath}svgs\\`);
         }
@@ -27,16 +25,10 @@ const cheerio = require('cheerio');
                 return
             }
             console.log(`Write SVG finised ${i}/${size}`)})
-        delay(2000)
+        delay(1000)
     }
     await browser.close()
 })()
-
-function extractSVG(html) {
-    $ = cheerio.load(html)
-    let svgElement = $('svg').html()
-    return svgElement
-}
 
 function delay(timeout){
     return new Promise((resolve)=>{
