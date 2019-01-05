@@ -3,8 +3,8 @@ const fs = require('fs');
 
 (async()=>{
     // 配置文件夹路径和http地址
-    const folderPath='E:\\Nextcloud\\weiwei\\cityindex\\treemap\\'
-    const baseURL='http://127.0.0.1:4000/treemap/'
+    const folderPath='E:\\Nextcloud\\weiwei\\cityindex\\treemap_compact_dark\\compact_light\\'
+    const baseURL='http://127.0.0.1:4000/treemap_compact_dark/compact_light/'
 
 
     let fileNames=fs.readdirSync(folderPath,'utf8')
@@ -12,7 +12,7 @@ const fs = require('fs');
     const browser = await puppeteer.launch({headless:true})
     const page = await browser.newPage()
     for (i=0,size=fileNames.length;i<size;i++){
-        await page.goto(`${baseURL}${fileNames[i]}`,{ waitUntil: 'networkidle0' ,timeout:'0'})
+        await page.goto(`${baseURL}${fileNames[i]}`)
 
         let html =await page.content()
         let svgInline= await page.evaluate(() => document.querySelector('svg').outerHTML)
