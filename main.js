@@ -2,9 +2,10 @@ const puppeteer = require('puppeteer');
 const fs = require('fs');
 
 (async()=>{
-    // 配置文件夹路径和http地址
-    const folderPath='E:\\Nextcloud\\weiwei\\cityindex\\treemap_compact_dark\\compact_light\\'
-    const baseURL='http://127.0.0.1:4000/treemap_compact_dark/compact_light/'
+    // configure folder and http url path
+    // the folder contain all the html file
+    const folderPath='E:\\*********\\'
+    const baseURL='http://127.0.0.1:4000/********/'
 
 
     let fileNames=fs.readdirSync(folderPath,'utf8')
