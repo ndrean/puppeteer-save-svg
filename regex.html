@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    const rgx = /about:blank/g
+
+    const doc = `
+      <div>
+        <p marker-end="url(about:blank#id1)">ok</p>
+        <p marker-end="url(about:blank#id2)">bibi</p>
+      </div>
+    `;
+
+    const l = doc.replace(rgx, "")
+    document.body.insertAdjacentHTML('afterbegin', l)
+
+
+  </script>
+</body>
+
+</html>

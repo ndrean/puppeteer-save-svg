@@ -30,11 +30,10 @@ const fs = require("fs").promises;
     doc.appendChild(style);
 
     const text = doc.toString();
-    text.replace(/url\(([^)]+)#/g, "");
-
+    text.replace(/about:blank/g, "");
     const parser = new DOMParser();
-    const innerNodes = parser.parseFromString(text, "application/xml");
-    doc.appendChild = innerNodes;
+    const parsed = parser.parseFromString(text, "application/xml");
+    doc.appendChild(parsed.body);
 
     return doc.outerHTML;
   });
