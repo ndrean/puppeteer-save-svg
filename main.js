@@ -28,11 +28,14 @@ const fs = require("fs").promises;
     }`;
 
     doc.appendChild(style);
+
     const text = doc.toString();
     text.replace(/url\(([^)]+)#/g, "");
+
     const parser = new DOMParser();
-    const innertext = parser.parseFromString(text, "application/xml");
-    doc.appendChild = innertext;
+    const innerNodes = parser.parseFromString(text, "application/xml");
+    doc.appendChild = innerNodes;
+
     return doc.outerHTML;
   });
 
