@@ -26,8 +26,13 @@ const fs = require("fs").promises;
       fill: #333;
       stroke-width: 1.5px;
     }`;
+
     doc.appendChild(style);
-    doc.innerHTML.replace(/\(([^)]+)#/g, "");
+    const text = doc.toString();
+    text.replace(/url\(([^)]+)#/g, "");
+    const parser = new DOMParser();
+    const innertext = parser.parseFromString(text, "application/xml");
+    doc.appendChild = innertext;
     return doc.outerHTML;
   });
 
